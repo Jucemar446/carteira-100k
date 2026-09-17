@@ -23,8 +23,6 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
 .card-pad{padding:13px}
 .sec{font-size:10px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin:14px 0 7px}
 .sec:first-child{margin-top:0}
-
-/* IBOVESPA */
 .ibov-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
 .ibov-inp{width:100%;border:none;outline:none;font-size:18px;font-weight:700;background:transparent;font-family:Arial,sans-serif;color:#1F3864}
 .ibov-inp::placeholder{color:#ccc;font-weight:400;font-size:15px}
@@ -35,8 +33,6 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
 .tend-alta{background:#d4edda;color:#155724}
 .tend-baixa{background:#f8d7da;color:#721c24}
 .tend-neutro{background:#f0f0f0;color:#888}
-
-/* COTAÇÕES */
 .cot-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .chip{border-radius:9px;padding:9px 10px;border:0.5px solid rgba(0,0,0,.08)}
 .chip-ticker{font-size:10px;font-weight:700;color:#666;margin-bottom:4px}
@@ -51,15 +47,11 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
 .sig-above{background:#f0f0f0;color:#666}
 .sig-teto{background:#f8d7da;color:#721c24}
 .sig-empty{background:#f0f0f0;color:#bbb}
-
-/* ATIVOS */
 .abadge{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
 .achev{font-size:11px;color:#ccc;margin-left:3px;transition:transform .18s;flex-shrink:0}
 .achev.op{transform:rotate(180deg)}
 .nbw{margin:0 13px 7px;height:3px;background:#f0f0f0;border-radius:2px}
 .nb{height:3px;border-radius:2px}
-
-/* APORTES */
 .hist-item{border-top:0.5px solid #f0f0f0;padding:10px 13px;display:flex;align-items:flex-start;gap:9px}
 .hist-del{background:none;border:none;color:#ddd;font-size:16px;cursor:pointer;flex-shrink:0;padding:2px 0}
 .hist-del:active{color:#e74c3c}
@@ -72,8 +64,6 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
 .btn-add:active{opacity:.8}
 .empty-state{text-align:center;padding:24px 0;color:#bbb;font-size:13px}
 .hist-total{background:#f7f9fc;border-top:0.5px solid #eee;padding:10px 13px;display:flex;justify-content:space-between;font-size:12px;font-weight:700}
-
-/* CALCULADORA */
 .calc-result{background:#f7f9fc;border-radius:9px;padding:12px;margin-top:10px}
 .calc-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid #eee;font-size:12px}
 .calc-row:last-child{border-bottom:none}
@@ -82,8 +72,6 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
 .calc-val{font-weight:700;color:#1F3864;text-align:right}
 .calc-cotas{font-size:11px;color:#888;text-align:right}
 .calc-total{margin-top:8px;padding:10px;background:#1F3864;border-radius:8px;color:#fff;display:flex;justify-content:space-between;align-items:center}
-
-/* RESUMO */
 .rgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
 .rcard{background:#fff;border-radius:11px;border:0.5px solid rgba(0,0,0,.08);padding:11px}
 .rl{font-size:10px;color:#aaa;margin-bottom:3px}
@@ -94,13 +82,14 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
 .cli{display:flex;align-items:center;gap:4px;font-size:10px;color:#666}
 .clsq{width:8px;height:8px;border-radius:2px;flex-shrink:0}
 .hidden{display:none}
+.nota-card{background:#fff8e1;border:0.5px solid #ffe082;border-radius:10px;padding:11px;margin-bottom:10px;font-size:11px;color:#5d4037;line-height:1.5}
 </style>
 </head>
 <body>
 
 <div class="hero">
   <h1>Carteira R$100.000</h1>
-  <div class="hero-sub">5 ativos · 15 níveis · Sinais ao vivo</div>
+  <div class="hero-sub">4 ativos · 12 níveis · Sinais ao vivo</div>
   <div class="hero-nums">
     <div class="hc"><div class="hl">Capital total</div><div class="hv">R$100k</div></div>
     <div class="hc"><div class="hl">Div. mensal est.</div><div class="hv" id="hv-div">—</div></div>
@@ -118,8 +107,6 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
 
 <!-- COTAÇÕES -->
 <div class="pg" id="pg-cotacoes">
-
-  <!-- IBOVESPA CARD -->
   <div class="card card-pad">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
       <div style="font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px">
@@ -128,19 +115,12 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
       <div style="font-size:10px;color:#bbb">salvo automaticamente</div>
     </div>
     <div class="ibov-grid">
-      <div>
-        <div class="ibov-lbl">Pontuação atual</div>
-        <input class="ibov-inp" type="number" id="ibov-pts" placeholder="130000" inputmode="decimal" step="1" min="0" oninput="onIbov()">
-      </div>
-      <div>
-        <div class="ibov-lbl">Variação do dia (%)</div>
-        <input class="ibov-var" type="number" id="ibov-var" placeholder="0,00" inputmode="decimal" step="0.01" oninput="onIbov()">
-      </div>
+      <div><div class="ibov-lbl">Pontuação atual</div><input class="ibov-inp" type="number" id="ibov-pts" placeholder="130000" inputmode="decimal" step="1" min="0" oninput="onIbov()"></div>
+      <div><div class="ibov-lbl">Variação do dia (%)</div><input class="ibov-var" type="number" id="ibov-var" placeholder="0,00" inputmode="decimal" step="0.01" oninput="onIbov()"></div>
     </div>
     <div class="ibov-tend tend-neutro" id="ibov-tend">— Digite a pontuação e variação do dia</div>
   </div>
 
-  <!-- ATIVO PRICES -->
   <div class="card card-pad">
     <div style="font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px">
       📈 Preço atual <span style="font-size:10px;color:#aaa;font-weight:400">(salvo automaticamente)</span>
@@ -148,13 +128,17 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
     <div class="cot-grid" id="cot-grid"></div>
     <div class="hint">Preços salvos no dispositivo entre sessões</div>
   </div>
-
   <div class="sec">Sinais de compra por nível</div>
   <div id="signals-list"></div>
 </div>
 
 <!-- ATIVOS -->
-<div class="pg hidden" id="pg-ativos"></div>
+<div class="pg hidden" id="pg-ativos">
+  <div class="nota-card">
+    ⚡ <strong>QQQI11</strong> usa estratégia de opções cobertas sobre o Nasdaq-100. Gera renda mensal alta (~1% ao mês) mas com menor valorização da cota. Ideal para <strong>renda passiva</strong>, não para crescimento de patrimônio.
+  </div>
+  <div id="ativos-list"></div>
+</div>
 
 <!-- APORTES -->
 <div class="pg hidden" id="pg-aportes">
@@ -162,7 +146,7 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
     <div style="font-size:12px;font-weight:700;margin-bottom:10px">➕ Registrar aporte realizado</div>
     <div class="input-row">
       <div class="inp-group"><label>Ativo</label>
-        <select id="ap-ticker"><option>NDIV11</option><option>DIVD11</option><option>TAEE11</option><option>BBSE3</option><option>ITSA4</option></select>
+        <select id="ap-ticker"><option>QQQI11</option><option>TAEE11</option><option>BBSE3</option><option>ITSA4</option></select>
       </div>
       <div class="inp-group"><label>Nível</label>
         <select id="ap-nivel"><option value="0">🥇 Nível 1</option><option value="1">🥈 Nível 2</option><option value="2">🥉 Nível 3</option></select>
@@ -189,7 +173,7 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
     <div style="font-size:12px;font-weight:700;margin-bottom:10px">🧮 Quantas cotas comprar?</div>
     <div class="input-row">
       <div class="inp-group"><label>Ativo</label>
-        <select id="calc-ticker" onchange="calcUpdate()"><option>NDIV11</option><option>DIVD11</option><option>TAEE11</option><option>BBSE3</option><option>ITSA4</option></select>
+        <select id="calc-ticker" onchange="calcUpdate()"><option>QQQI11</option><option>TAEE11</option><option>BBSE3</option><option>ITSA4</option></select>
       </div>
       <div class="inp-group"><label>Valor disponível (R$)</label><input type="number" id="calc-valor" placeholder="2000,00" step="0.01" min="0" inputmode="decimal" oninput="calcUpdate()"></div>
     </div>
@@ -199,7 +183,7 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
     </div>
     <div id="calc-result-wrap" class="hidden">
       <div class="calc-result"><div id="calc-rows"></div></div>
-      <div class="calc-total" id="calc-total-row">
+      <div class="calc-total">
         <div><div style="font-size:10px;opacity:.75">Dividendo mensal estimado</div><div style="font-size:16px;font-weight:700" id="calc-div-est">—</div></div>
         <div style="text-align:right"><div style="font-size:10px;opacity:.75">DY anual</div><div style="font-size:16px;font-weight:700" id="calc-dy-est">—</div></div>
       </div>
@@ -211,7 +195,7 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
 <!-- RESUMO -->
 <div class="pg hidden" id="pg-resumo">
   <div class="rgrid">
-    <div class="rcard"><div class="rl">Capital total</div><div class="rv">R$100.000</div><div class="rs">5 ativos · R$20k cada</div></div>
+    <div class="rcard"><div class="rl">Capital total</div><div class="rv">R$100.000</div><div class="rs">4 ativos · QQQI11 R$40k</div></div>
     <div class="rcard"><div class="rl">Div. mensal est.</div><div class="rv" id="r-dm">—</div><div class="rs">todos os alvos</div></div>
     <div class="rcard"><div class="rl">Renda anual est.</div><div class="rv" id="r-ra">—</div><div class="rs">projeção completa</div></div>
     <div class="rcard"><div class="rl">DY médio a.a.</div><div class="rv" id="r-dy">—</div><div class="rs">ponderado por capital</div></div>
@@ -232,52 +216,46 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 const ATIVOS = [
-  {ticker:"NDIV11",nome:"ETF Dividendos B3",tipo:"etf",capital:20000,dyAnual:0.0893,teto:130,
+  {ticker:"QQQI11",nome:"Nasdaq-100 High Income (Opções Cobertas)",tipo:"etf",capital:40000,dyAnual:0.1200,teto:108,
    niveis:[
-    {icon:"🥇",desc:"Entrada imediata",faixa:"R$123–125",preco:124.00,aporte:8000,dyM:0.0071,dyA:0.0850},
-    {icon:"🥈",desc:"Suporte 1–2",faixa:"R$121–123",preco:122.00,aporte:7000,dyM:0.0073,dyA:0.0880},
-    {icon:"🥉",desc:"Oportunidade",faixa:"R$115–118",preco:116.50,aporte:5000,dyM:0.0079,dyA:0.0950},
+    {icon:"🥇",desc:"Alvo 1 — Entrada",      faixa:"R$90,00",preco:90.00,aporte:16000,dyM:0.0100,dyA:0.1200},
+    {icon:"🥈",desc:"Alvo 2 — Suporte",       faixa:"R$88,00",preco:88.00,aporte:14000,dyM:0.0102,dyA:0.1230},
+    {icon:"🥉",desc:"Alvo 3 — Oportunidade",  faixa:"R$86,00",preco:86.00,aporte:10000,dyM:0.0105,dyA:0.1260},
    ]},
-  {ticker:"DIVD11",nome:"ETF Dividendos Selecionados",tipo:"etf",capital:20000,dyAnual:0.0913,teto:68,
-   niveis:[
-    {icon:"🥇",desc:"Consolidação",faixa:"R$60–62",preco:61.00,aporte:8000,dyM:0.0069,dyA:0.0830},
-    {icon:"🥈",desc:"Suporte interm.",faixa:"R$55–58",preco:56.50,aporte:7000,dyM:0.0075,dyA:0.0910},
-    {icon:"🥉",desc:"Fundo 52 sem.",faixa:"R$50–52",preco:51.00,aporte:5000,dyM:0.0083,dyA:0.1000},
-   ]},
-  {ticker:"TAEE11",nome:"Taesa — Transmissão",tipo:"acao",capital:20000,dyAnual:0.1150,teto:41,
+  {ticker:"TAEE11",nome:"Taesa — Transmissão de Energia",tipo:"acao",capital:20000,dyAnual:0.1150,teto:41,
    niveis:[
     {icon:"🥇",desc:"Aporte principal",faixa:"R$37,00",preco:37.00,aporte:7000,dyM:0.0092,dyA:0.1100},
-    {icon:"🥈",desc:"Suporte",faixa:"R$35,50",preco:35.50,aporte:7000,dyM:0.0096,dyA:0.1150},
-    {icon:"🥉",desc:"Oportunidade",faixa:"R$34,00",preco:34.00,aporte:6000,dyM:0.0100,dyA:0.1200},
+    {icon:"🥈",desc:"Suporte",         faixa:"R$35,50",preco:35.50,aporte:7000,dyM:0.0096,dyA:0.1150},
+    {icon:"🥉",desc:"Oportunidade",    faixa:"R$34,00",preco:34.00,aporte:6000,dyM:0.0100,dyA:0.1200},
    ]},
   {ticker:"BBSE3",nome:"BB Seguridade",tipo:"acao",capital:20000,dyAnual:0.1095,teto:42,
    niveis:[
     {icon:"🥇",desc:"Aporte principal",faixa:"R$38,00",preco:38.00,aporte:7000,dyM:0.0088,dyA:0.1050},
-    {icon:"🥈",desc:"Suporte",faixa:"R$36,50",preco:36.50,aporte:7000,dyM:0.0091,dyA:0.1095},
-    {icon:"🥉",desc:"Oportunidade",faixa:"R$35,00",preco:35.00,aporte:6000,dyM:0.0095,dyA:0.1140},
+    {icon:"🥈",desc:"Suporte",         faixa:"R$36,50",preco:36.50,aporte:7000,dyM:0.0091,dyA:0.1095},
+    {icon:"🥉",desc:"Oportunidade",    faixa:"R$35,00",preco:35.00,aporte:6000,dyM:0.0095,dyA:0.1140},
    ]},
-  {ticker:"ITSA4",nome:"Itaúsa — Holding",tipo:"acao",capital:20000,dyAnual:0.1020,teto:14.50,
+  {ticker:"ITSA4",nome:"Itaúsa — Holding Financeira",tipo:"acao",capital:20000,dyAnual:0.1020,teto:14.50,
    niveis:[
     {icon:"🥇",desc:"Aporte principal",faixa:"R$12,30",preco:12.30,aporte:7000,dyM:0.0080,dyA:0.0960},
-    {icon:"🥈",desc:"Suporte",faixa:"R$11,60",preco:11.60,aporte:7000,dyM:0.0085,dyA:0.1020},
-    {icon:"🥉",desc:"Oportunidade",faixa:"R$11,00",preco:11.00,aporte:6000,dyM:0.0090,dyA:0.1080},
+    {icon:"🥈",desc:"Suporte",         faixa:"R$11,60",preco:11.60,aporte:7000,dyM:0.0085,dyA:0.1020},
+    {icon:"🥉",desc:"Oportunidade",    faixa:"R$11,00",preco:11.00,aporte:6000,dyM:0.0090,dyA:0.1080},
    ]},
 ];
-const COLORS=['#2a78d6','#eb6834','#1baf7a','#eda100','#e87ba4'];
-const BG=['#e6f0fb','#fff3ec','#e8f5e9','#fef9e7','#fce8f3'];
+
+const COLORS=['#7B2FBE','#1baf7a','#eda100','#e87ba4'];
+const BG=['#f3e8ff','#e8f5e9','#fef9e7','#fce8f3'];
 const ICONS=['🥇','🥈','🥉'];
 const R=v=>'R$'+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
 const P=v=>(v*100).toFixed(2).replace('.',',')+'%';
 const divM=a=>a.niveis.reduce((s,n)=>s+n.aporte*n.dyM,0);
 
-function lsGet(k,d){try{const v=localStorage.getItem(k);return v!==null?JSON.parse(v):d;}catch(e){return d;}}
+function lsGet(k,d){try{var v=localStorage.getItem(k);return v!==null?JSON.parse(v):d;}catch(e){return d;}}
 function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
 
-let prices=lsGet('crt_prices',{});
-let aportes=lsGet('crt_aportes',[]);
-let ibov=lsGet('crt_ibov',{pts:null,vr:null});
+var prices=lsGet('crt2_prices',{});
+var aportes=lsGet('crt2_aportes',[]);
+var ibov=lsGet('crt2_ibov',{pts:null,vr:null});
 
-// IBOVESPA
 function initIbov(){
   if(ibov.pts) document.getElementById('ibov-pts').value=ibov.pts;
   if(ibov.vr!==null) document.getElementById('ibov-var').value=ibov.vr;
@@ -286,37 +264,25 @@ function initIbov(){
 function onIbov(){
   var pts=parseFloat(document.getElementById('ibov-pts').value);
   var vr=parseFloat(document.getElementById('ibov-var').value);
-  ibov={pts:isNaN(pts)||pts<=0?null:pts, vr:isNaN(vr)?null:vr};
-  lsSet('crt_ibov',ibov);
+  ibov={pts:isNaN(pts)||pts<=0?null:pts,vr:isNaN(vr)?null:vr};
+  lsSet('crt2_ibov',ibov);
   renderIbov();
 }
 function renderIbov(){
   var el=document.getElementById('ibov-tend');
   var vi=document.getElementById('ibov-var');
-  if(!ibov.pts){
-    el.className='ibov-tend tend-neutro';
-    el.textContent='— Digite a pontuação e variação do dia';
-    return;
-  }
-  if(ibov.vr===null){
-    el.className='ibov-tend tend-neutro';
-    el.textContent='📊 '+ibov.pts.toLocaleString('pt-BR')+' pts — informe a variação';
-    vi.style.color='#888';
-    return;
-  }
-  var v=ibov.vr;
-  var pts=ibov.pts;
+  if(!ibov.pts){el.className='ibov-tend tend-neutro';el.textContent='— Digite a pontuação e variação do dia';return;}
+  if(ibov.vr===null){el.className='ibov-tend tend-neutro';el.textContent='📊 '+ibov.pts.toLocaleString('pt-BR')+' pts';vi.style.color='#888';return;}
+  var v=ibov.vr,pts=ibov.pts;
   var ptsDia=Math.round(pts*v/100/(1+v/100));
   var sinal=v>0?'+':'';
-  var ptsTxt='('+sinal+ptsDia.toLocaleString('pt-BR')+' pts)';
   var arrow=v>0?'▲':v<0?'▼':'▬';
   var status=v>0?'Mercado em alta hoje':v<0?'Mercado em baixa hoje':'Mercado estável';
   el.className='ibov-tend '+(v>0?'tend-alta':v<0?'tend-baixa':'tend-neutro');
-  el.textContent=arrow+' '+sinal+v.toFixed(2).replace('.',',')+' % '+ptsTxt+' — '+status;
+  el.textContent=arrow+' '+sinal+v.toFixed(2).replace('.',',')+' % ('+sinal+ptsDia.toLocaleString('pt-BR')+' pts) — '+status;
   vi.style.color=v>0?'#155724':v<0?'#721c24':'#888';
 }
 
-// SINAL
 function sig(alvo,ticker){
   var p=prices[ticker];
   if(!p) return {cls:'sig-empty',txt:'— sem preço'};
@@ -328,7 +294,6 @@ function sig(alvo,ticker){
   return {cls:'sig-above',txt:'↓ '+d+'% para atingir'};
 }
 
-// HERO
 function updateHero(){
   var td=ATIVOS.reduce(function(s,a){return s+divM(a);},0);
   document.getElementById('hv-div').textContent=R(td);
@@ -338,7 +303,6 @@ function updateHero(){
   document.getElementById('r-dy').textContent=P(td/100000*12);
 }
 
-// COTAÇÕES GRID
 function buildCotGrid(){
   document.getElementById('cot-grid').innerHTML=ATIVOS.map(function(a,i){
     var s=getSigChip(a.ticker);
@@ -348,8 +312,7 @@ function buildCotGrid(){
       '<input class="chip-inp" type="number" step="0.01" min="0" placeholder="0,00" id="inp-'+a.ticker+'" '+
       'value="'+(prices[a.ticker]||'')+'" style="color:'+COLORS[i]+'" inputmode="decimal" '+
       'oninput="onPrice(\''+a.ticker+'\',this.value)"></div>'+
-      '<span class="chip-sig '+s.cls+'" id="cs-'+a.ticker+'">'+s.txt+'</span>'+
-      '</div>';
+      '<span class="chip-sig '+s.cls+'" id="cs-'+a.ticker+'">'+s.txt+'</span></div>';
   }).join('');
 }
 function getSigChip(ticker){
@@ -362,7 +325,7 @@ function getSigChip(ticker){
 function onPrice(ticker,val){
   var v=parseFloat(val);
   if(isNaN(v)||v<=0) delete prices[ticker]; else prices[ticker]=v;
-  lsSet('crt_prices',prices);
+  lsSet('crt2_prices',prices);
   var s=getSigChip(ticker);
   var el=document.getElementById('cs-'+ticker);
   if(el){el.className='chip-sig '+s.cls;el.textContent=s.txt;}
@@ -382,15 +345,14 @@ function rebuildSignals(){
         var dist=p&&p>n.preco?'↓ '+((p-n.preco)/n.preco*100).toFixed(1)+'% para atingir':(p&&p<=n.preco?'✅ Dentro da faixa':'');
         return '<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 13px;border-top:0.5px solid #f0f0f0">'+
           '<div><div style="font-size:12px;font-weight:700">'+n.icon+' '+R(n.preco)+' <span style="font-size:9px;color:#aaa;font-weight:400">'+n.faixa+'</span></div>'+
-          (dist?'<div style="font-size:9px;color:#aaa;margin-top:1px">'+dist+'</div>':'')+'</div>'+
-          '<span class="chip-sig '+s.cls+'" style="margin-top:0">'+s.txt+'</span></div>';
+          (dist?'<div style="font-size:9px;color:#aaa;margin-top:1px">'+dist+'</div>':'')+
+          '</div><span class="chip-sig '+s.cls+'" style="margin-top:0">'+s.txt+'</span></div>';
       }).join('')+'</div>';
   }).join('');
 }
 
-// ATIVOS
 function rebuildAtivos(){
-  document.getElementById('pg-ativos').innerHTML=ATIVOS.map(function(a,i){
+  document.getElementById('ativos-list').innerHTML=ATIVOS.map(function(a,i){
     var dm=divM(a);var p=prices[a.ticker];
     var max=Math.max.apply(null,a.niveis.map(function(n){return n.aporte;}));
     var lh=p?('<div style="font-size:12px;font-weight:700;margin-top:2px;color:'+(p>a.teto?'#c0392b':COLORS[i])+'">'+R(p)+(p>a.teto?' ⚠️':'')+'</div>'):
@@ -427,12 +389,8 @@ function rebuildAtivos(){
       }).join('')+'</div></div>';
   }).join('');
 }
-function tog(bid,cid){
-  document.getElementById(bid).classList.toggle('hidden');
-  document.getElementById(cid).classList.toggle('op');
-}
+function tog(bid,cid){document.getElementById(bid).classList.toggle('hidden');document.getElementById(cid).classList.toggle('op');}
 
-// APORTES
 function addAporte(){
   var ticker=document.getElementById('ap-ticker').value;
   var nivel=parseInt(document.getElementById('ap-nivel').value);
@@ -441,14 +399,14 @@ function addAporte(){
   var data=document.getElementById('ap-data').value;
   if(!ticker||isNaN(preco)||preco<=0||isNaN(valor)||valor<=0){alert('Preencha preço e valor corretamente');return;}
   aportes.unshift({id:Date.now(),ticker:ticker,nivel:nivel,preco:preco,valor:valor,cotas:valor/preco,data:data||new Date().toISOString().slice(0,10)});
-  lsSet('crt_aportes',aportes);
+  lsSet('crt2_aportes',aportes);
   document.getElementById('ap-preco').value='';
   document.getElementById('ap-valor').value='';
   rebuildHist();rebuildProgress();
 }
 function removeAporte(id){
   aportes=aportes.filter(function(a){return a.id!==id;});
-  lsSet('crt_aportes',aportes);
+  lsSet('crt2_aportes',aportes);
   rebuildHist();rebuildProgress();
 }
 function rebuildHist(){
@@ -494,7 +452,6 @@ function rebuildProgress(){
   }).join('');
 }
 
-// CALCULADORA
 function calcUpdate(){
   var ticker=document.getElementById('calc-ticker').value;
   var valor=parseFloat(document.getElementById('calc-valor').value);
@@ -530,14 +487,14 @@ function calcUpdate(){
   document.getElementById('calc-dy-est').textContent=avgDY>0?P(avgDY):'—';
 }
 
-// CHARTS
 function buildCharts(){
   var labels=ATIVOS.map(function(a){return a.ticker;});
   var divs=ATIVOS.map(function(a){return +divM(a).toFixed(2);});
   var caps=ATIVOS.map(function(a){return a.capital;});
   var leg=document.getElementById('pie-leg');
+  var pcts=['40%','20%','20%','20%'];
   leg.innerHTML=labels.map(function(l,i){
-    return '<span class="cli"><span class="clsq" style="background:'+COLORS[i]+'"></span>'+l+' 20%</span>';
+    return '<span class="cli"><span class="clsq" style="background:'+COLORS[i]+'"></span>'+l+' '+pcts[i]+'</span>';
   }).join('');
   new Chart(document.getElementById('pie-c'),{type:'doughnut',
     data:{labels:labels,datasets:[{data:caps,backgroundColor:COLORS,borderWidth:2,borderColor:'#fff'}]},
@@ -551,7 +508,6 @@ function buildCharts(){
   });
 }
 
-// TABS
 function TAB(name,btn){
   document.querySelectorAll('[id^="pg-"]').forEach(function(p){p.classList.add('hidden');});
   document.getElementById('pg-'+name).classList.remove('hidden');
@@ -560,7 +516,6 @@ function TAB(name,btn){
   if(name==='resumo') rebuildProgress();
 }
 
-// INIT
 document.getElementById('ap-data').value=new Date().toISOString().slice(0,10);
 updateHero();
 initIbov();
