@@ -121,6 +121,21 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
     <div class="ibov-tend tend-neutro" id="ibov-tend">— Digite a pontuação e variação do dia</div>
   </div>
 
+  <!-- NASDAQ CARD -->
+  <div class="card card-pad">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div style="font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px">
+        💻 Nasdaq-100 <span style="background:#7B2FBE;color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px">NDX</span>
+      </div>
+      <div style="font-size:10px;color:#bbb">salvo automaticamente</div>
+    </div>
+    <div class="ibov-grid">
+      <div><div class="ibov-lbl">Pontuação atual</div><input class="ibov-inp" style="color:#7B2FBE" type="number" id="ndx-pts" placeholder="21000" inputmode="decimal" step="1" min="0" oninput="onNdx()"></div>
+      <div><div class="ibov-lbl">Variação do dia (%)</div><input class="ibov-var" type="number" id="ndx-var" placeholder="0,00" inputmode="decimal" step="0.01" oninput="onNdx()"></div>
+    </div>
+    <div class="ibov-tend tend-neutro" id="ndx-tend">— Digite a pontuação e variação do dia</div>
+  </div>
+
   <div class="card card-pad">
     <div style="font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px">
       📈 Preço atual <span style="font-size:10px;color:#aaa;font-weight:400">(salvo automaticamente)</span>
@@ -255,6 +270,7 @@ function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
 var prices=lsGet('crt2_prices',{});
 var aportes=lsGet('crt2_aportes',[]);
 var ibov=lsGet('crt2_ibov',{pts:null,vr:null});
+var ndx=lsGet('crt2_ndx',{pts:null,vr:null});
 
 function initIbov(){
   if(ibov.pts) document.getElementById('ibov-pts').value=ibov.pts;
@@ -301,6 +317,33 @@ function updateHero(){
   document.getElementById('r-dm').textContent=R(td);
   document.getElementById('r-ra').textContent=R(td*12);
   document.getElementById('r-dy').textContent=P(td/100000*12);
+}
+
+function initNdx(){
+  if(ndx.pts) document.getElementById('ndx-pts').value=ndx.pts;
+  if(ndx.vr!==null) document.getElementById('ndx-var').value=ndx.vr;
+  renderNdx();
+}
+function onNdx(){
+  var pts=parseFloat(document.getElementById('ndx-pts').value);
+  var vr=parseFloat(document.getElementById('ndx-var').value);
+  ndx={pts:isNaN(pts)||pts<=0?null:pts,vr:isNaN(vr)?null:vr};
+  lsSet('crt2_ndx',ndx);
+  renderNdx();
+}
+function renderNdx(){
+  var el=document.getElementById('ndx-tend');
+  var vi=document.getElementById('ndx-var');
+  if(!ndx.pts){el.className='ibov-tend tend-neutro';el.textContent='— Digite a pontuação e variação do dia';return;}
+  if(ndx.vr===null){el.className='ibov-tend tend-neutro';el.textContent='💻 '+ndx.pts.toLocaleString('pt-BR')+' pts';vi.style.color='#888';return;}
+  var v=ndx.vr,pts=ndx.pts;
+  var ptsDia=Math.round(pts*v/100/(1+v/100));
+  var sinal=v>0?'+':'';
+  var arrow=v>0?'▲':v<0?'▼':'▬';
+  var status=v>0?'Nasdaq em alta hoje':v<0?'Nasdaq em baixa hoje':'Nasdaq estável';
+  el.className='ibov-tend '+(v>0?'tend-alta':v<0?'tend-baixa':'tend-neutro');
+  el.textContent=arrow+' '+sinal+v.toFixed(2).replace('.',',')+' % ('+sinal+ptsDia.toLocaleString('pt-BR')+' pts) — '+status;
+  vi.style.color=v>0?'#155724':v<0?'#721c24':'#888';
 }
 
 function buildCotGrid(){
@@ -519,6 +562,7 @@ function TAB(name,btn){
 document.getElementById('ap-data').value=new Date().toISOString().slice(0,10);
 updateHero();
 initIbov();
+initNdx();
 buildCotGrid();
 rebuildSignals();
 rebuildAtivos();
