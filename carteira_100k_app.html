@@ -93,7 +93,7 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
   <div class="hero-nums">
     <div class="hc"><div class="hl">Capital total</div><div class="hv">R$100k</div></div>
     <div class="hc"><div class="hl">Div. mensal est.</div><div class="hv" id="hv-div">—</div></div>
-    <div class="hc"><div class="hl">DY médio a.a.</div><div class="hv" id="hv-dy">—</div></div>
+    <div class="hc"><div class="hl">DY Alvo 1 a.a.</div><div class="hv" id="hv-dy">—</div></div>
   </div>
 </div>
 
@@ -213,7 +213,7 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#0b0b0b;padding:0 0 3
     <div class="rcard"><div class="rl">Capital total</div><div class="rv">R$100.000</div><div class="rs">4 ativos · QQQI11 R$40k</div></div>
     <div class="rcard"><div class="rl">Div. mensal est.</div><div class="rv" id="r-dm">—</div><div class="rs">todos os alvos</div></div>
     <div class="rcard"><div class="rl">Renda anual est.</div><div class="rv" id="r-ra">—</div><div class="rs">projeção completa</div></div>
-    <div class="rcard"><div class="rl">DY médio a.a.</div><div class="rv" id="r-dy">—</div><div class="rs">ponderado por capital</div></div>
+    <div class="rcard"><div class="rl">DY Alvo 1 a.a.</div><div class="rv" id="r-dy">—</div><div class="rs">rendimento mínimo garantido</div></div>
   </div>
   <div class="sec">Progresso dos aportes registrados</div>
   <div class="card card-pad" id="prog-wrap"></div>
@@ -313,10 +313,12 @@ function sig(alvo,ticker){
 function updateHero(){
   var td=ATIVOS.reduce(function(s,a){return s+divM(a);},0);
   document.getElementById('hv-div').textContent=R(td);
-  document.getElementById('hv-dy').textContent=P(td/100000*12);
+  var dy1=ATIVOS.reduce(function(s,a){return s+a.niveis[0].aporte*a.niveis[0].dyA;},0)/
+          ATIVOS.reduce(function(s,a){return s+a.niveis[0].aporte;},0);
+  document.getElementById('hv-dy').textContent=P(dy1);
   document.getElementById('r-dm').textContent=R(td);
   document.getElementById('r-ra').textContent=R(td*12);
-  document.getElementById('r-dy').textContent=P(td/100000*12);
+  document.getElementById('r-dy').textContent=P(dy1);
 }
 
 function initNdx(){
